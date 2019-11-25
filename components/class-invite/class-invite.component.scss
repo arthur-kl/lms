@@ -1,0 +1,93 @@
+@import '../../../../styles';
+
+.screen-wrapper {
+  background-color:white;
+  padding:0 0 0 0;
+  z-index:1;
+  position:relative;
+  /*height:calc(100vh);*/
+}
+
+.title {
+  @include font-size(3.0);
+  font-weight:600;
+  padding:25px 0 15px;
+}
+
+.container {
+
+  padding-bottom:140px;
+  
+  dl {
+    display: inline-block;
+    margin: 0em auto 1em;
+    width: 100%;
+  }
+
+  dt {
+    float: left;
+    clear: left;
+    display: inline-block;
+    margin: .5em 0 0 0;
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+
+  dd {
+    float: left;
+    margin: .5em 0 0 0;
+    font-size: 1.4em;
+    margin-left: .8em;
+  }
+
+  p {
+    margin-bottom: 1em;
+  }
+
+  ul {
+    padding:10px 0;
+    line-height: 25px;
+    list-style: disc inside none;
+    li {
+      padding-left: 10px;
+    }
+  }
+
+  h2 {
+    @include font-size(2.0);
+    font-weight:600;
+    /*padding:30px 0;*/
+  }
+}
+
+#enrol-url {
+  /*font-size: 1.2em;*/
+  color: $teal;
+  font-weight:600;
+  margin: .2em auto;
+  margin-bottom:40px;
+}
+
+.btn-done,
+.btn-copy {
+  width: auto;
+  display: block;
+  margin: 1.6em auto;
+
+  @include respond-to(tablet) {
+    width:25%;
+    float:none;
+  }
+}
+
+.big-btn {
+  width:100%;
+  float:none;
+  height:60px;
+  padding:20px;
+  font-size:1.2em;
+}
+
+em {
+  font-weight:600;
+}

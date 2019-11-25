@@ -1,0 +1,95 @@
+<app-user-menu></app-user-menu>
+
+<div class="screen-wrapper">
+
+  <nav class="nav-strip">
+
+    <div class="container group">
+
+      <a class="back-link"
+         (click)="goBack()"
+         i18n="@@teacher-components-class-create-back-link">
+        Back to classes</a>
+    </div>
+
+  </nav>
+
+  <div class="container">
+
+    <h1 class="title" i18n="@@teacher-components-class-create">Create a Class</h1>
+
+    <form [formGroup]="classForm" class="form-signin">
+
+      <div *ngIf="exists" class="error-message-container">
+        <span class="error-message">A class with this name exists already.</span>
+      </div>
+
+      <div class="choose-name form-group">
+        <label for="class-name" i18n="@@teacher-components-class-create-class-name">Name your class</label>
+        <input id="class-name"
+               name="name"
+               type="text"
+               class="form-control"
+               formControlName="clsName">
+        <div *ngIf="submitted && f.clsName.errors" class="g_error-text">
+          <span *ngIf="f.clsName.errors.required"
+                i18n="@@teacher-components-class-create-class-name-required">This class needs a name.</span>
+          <span *ngIf="f.clsName.value && f.clsName.errors.minlength"
+                i18n="@@teacher-components-class-create-class-name-minlength">The name must be at least {{ f.clsName.errors.minlength.requiredLength }} characters.</span>
+          <span *ngIf="f.clsName.value && f.clsName.errors.maxlength"
+                i18n="@@teacher-components-class-create-class-name-maxlength">The name must be at most {{ f.clsName.errors.maxlength.requiredLength }} characters.</span>
+        </div>
+      </div>
+      <div class="choose-curriclum form-group">
+        <div class="level-chooser" *ngFor="let curriculum of curricula" ngClass="cls-{{curriculum.level}}">
+          <input class="radio" id="level-{{curriculum.level}}" type="radio" formControlName="level"
+                 value="{{curriculum.level}}"/>
+          <label class="radio" for="level-{{curriculum.level}}">
+            {{ curriculum.title }}
+          </label>
+        </div>
+
+        <div *ngIf="submitted && f.level.errors" class="g_error-text">
+          <span *ngIf="f.level.errors.required"
+                i18n="@@teacher-components-class-create-level-required">Choose a level.</span>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="class-name" i18n="@@teacher-components-class-create-select-mascot"> Choose a mascot</label>
+        <div class="class-icons group">
+          <div *ngFor="let id of mascotIds()">
+            <img (click)="onSelectIcon(id)"
+                 [ngClass]="{'g_icon_selected': current_icon === id, 'g_icon_faded': current_icon !== id}"
+                 src="{{'assets/images/mascot/'+ id +'.png'}}"/>
+          </div>
+        </div>
+
+        <div *ngIf="submitted && f.icon.errors" class="g_error-text">
+          <span *ngIf="f.icon.errors.required"
+                i18n="@@teacher-components-class-create-icon-required">Choose a mascot.</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="create-class-btn"
+                appOneClick
+                (oneClick)="createClass()"
+                [busy]="busy"
+                [disabled]="busy"
+                class="button primary btn-save"
+                i18n="@@teacher-components-class-create-create-class-btn">
+          Create Class
+        </button>
+        <button id="btnDeleteClass" class="button grey btn-cancel" (click)="goBack()"
+                i18n="@@teacher-components-class-create-cancel-btn">
+          Cancel
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

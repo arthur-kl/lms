@@ -1,0 +1,105 @@
+<app-user-menu></app-user-menu>
+
+<app-teacher-class-header></app-teacher-class-header>
+
+<div class="cls-{{cls.level}} link-bar-bg">
+  <ul class="link-bar">
+
+    <li class="bar-item">
+      <a class="link-button" [routerLink]="['../course']"
+         i18n="@@teacher-teacher-curriculum-course">Course</a>
+    </li>
+
+    <li class="bar-item">
+      <a class="link-button" [routerLink]="['../students']"
+         i18n="@@teacher-components-class-detail-current">Students</a>
+    </li>
+
+    <ng-container>
+      <li class="bar-item">
+        <a class="link-button" [routerLink]="['../settings']"
+           i18n="@@teacher-components-class-settings">Settings</a>
+      </li>
+    </ng-container>
+
+  </ul>
+</div>
+
+<div class="homework" *ngIf="cls">
+  <div class="container">
+
+    <form [formGroup]="scheduleForm" class="schedule-form">
+
+      <div class="choose-day form-group">
+        <span class="form-group-title" i18n="@@set-homework-days">On which days to set homework?</span>
+        <div class="checkbox-wrapper" formArrayName="days">
+          <div *ngFor="let day of days.controls; let i=index" class="day-chooser">
+              <input class="checkbox" 
+                     id="day-{{i}}"
+                     [formControlName]="i"
+                     type="checkbox">
+              <label for="day-{{i}}">{{ daysSource[i].txt }}</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="choose-time form-group">
+
+        <span class="form-group-title" i18n="@@set-homework-time">At what time of day?</span>
+
+        <div class="radio-wrapper">
+          <div class="radio-chooser">
+            <input class="radio" id="morning"
+                   type="radio"
+                   value="morning"
+                   formControlName="time"/>
+            <label class="radio" for="morning">
+              In the morning (7am)
+            </label>
+          </div>
+          <div class="radio-chooser">
+            <input class="radio" id="afternoon"
+                   type="radio"
+                   value="afternoon"
+                   formControlName="time"/>
+            <label class="radio" for="afternoon">
+              In the afternoon (4pm)
+            </label>
+          </div>
+          <div class="radio-chooser">
+            <input class="radio" id="custom-time"
+                   type="radio"
+                   value="custom-time"
+                   formControlName="time"/>
+            <label class="radio" for="custom-time">
+              Let me pick a time
+            </label>
+            <select type="hour"
+                   id="hour-input"
+                   formControlName="hourInput">
+                <ng-container *ngFor="let hr of hours">
+                    <option value="{{ hr.val }}">{{ hr.txt }}</option>
+                </ng-container>
+            </select>
+            <span *ngIf="scheduleForm.controls.hourInput.errors">error</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="create-class-btn"
+                class="button primary btn-save"
+                (click)="onSave($event)"
+                i18n="@@save-btn">
+          Save
+        </button>
+        <!-- <button id="btnDeleteClass" class="button grey btn-cancel" (click)="goBack()"
+                i18n="@@cancel-btn">
+          Cancel
+        </button> -->
+      </div>
+
+    </form>
+
+  </div>
+</div>

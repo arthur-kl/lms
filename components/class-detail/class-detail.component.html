@@ -1,0 +1,50 @@
+<app-user-menu></app-user-menu>
+
+<app-teacher-class-header></app-teacher-class-header>
+
+<div class="cls-{{cls.level}} link-bar-bg">
+  <ul class="link-bar">
+
+    <li class="bar-item">
+      <a class="link-button" [routerLink]="['../course']" i18n="@@teacher-teacher-curriculum-course">Course</a>
+    </li>
+
+    <li class="bar-item">
+      <a class="current" i18n="@@teacher-components-class-detail-current">Students</a>
+    </li>
+    <ng-container *ngIf="canShowSettings | async">
+      <li class="bar-item">
+        <a class="link-button" [routerLink]="['../settings']" i18n="@@teacher-components-class-settings">Settings</a>
+      </li>
+    </ng-container>
+  </ul>
+</div>
+
+
+<div class="students-list" *ngIf="cls">
+
+  <!--<app-alerts></app-alerts>-->
+
+  <div class="container">
+
+    <div *ngIf="!cls.students || cls.students.length === 0"
+    i18n="@@teacher-components-class-detail-no-students-message">
+      <p class="got-none">
+        Hi! To get started, invite parents to join this class.</p>
+      <p>
+    </div>
+
+    <app-list-students [cls$]="cls$"></app-list-students>
+
+    <div class="actions group" *ngIf="cls">
+      <a id="btnInviteStudents" [routerLink]="['/teacher/class', cls.code, 'invite']"
+         class="button aqua btn-invite-students"
+         [ngClass]="{'big-btn': !cls.students || cls.students.length === 0}"
+         [class.disabled]="disableInvite | async"
+         i18n="@@teacher-components-class-detail-btnInviteStudents">
+       Invite Parents
+     </a>
+      <!--<a [routerLink]="['/teacher/class', cls.code, 'qrcodes']" class="button aqua btn-print-codes">QR Codes</a>-->
+    </div>
+  </div>
+</div>

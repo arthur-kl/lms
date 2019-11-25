@@ -1,0 +1,70 @@
+@import '../../../../styles';
+
+.class-header {
+	padding-bottom:10px !important;
+}
+
+.screen-wrapper {
+  padding: 30px 0 0 0;
+  height: calc(100vh);
+  position:relative;
+  z-index:1;
+  background-color:white;
+  
+  	@include respond-to(desktop) {
+		padding: 50px 0 0 0;
+	}
+}
+
+.student-info {
+	padding-bottom:30px;
+	
+	h3 {
+		font-size:24px;
+		margin:0 0 20px;
+		font-weight:700;
+		color:rgba(black,0.85);
+		
+		@include respond-to(desktop) {
+			font-size:30px;
+		}
+	}
+	
+	p {
+		font-weight:600;
+		margin:0 0 30px;
+	}
+	
+	dl {
+		@extend .group;
+		
+		dt {
+			float:left;
+			width: 60px;
+			clear:both;
+			margin-bottom:15px;
+		}
+		
+		dd {
+			float:left;
+			width:calc(100% - 80px);
+			margin-bottom:15px;
+			font-weight:600;
+		}
+	}
+
+  p {
+    padding-top: 5px;
+    @include font-size(1.5);
+  }	
+	
+}
+
+.actions {
+	@extend .container;
+	
+	.delete {
+		width:auto;
+		margin-right:30px;
+	}
+}

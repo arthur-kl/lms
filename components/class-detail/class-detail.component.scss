@@ -1,0 +1,120 @@
+@import '../../../../styles';
+
+.link-bar {
+	z-index:10;
+}
+
+
+p {
+    margin-bottom:20px;
+}
+
+
+p.got-none {
+  font-size:1.3em;
+  font-weight: 600;
+  line-spacing:2em;
+  padding:20px 20px 0;
+}
+
+.students-list {
+	background-color:white;
+	padding-top:15px;
+	position:relative;
+	min-height: 75vh;
+	z-index: 1;
+
+	@include respond-to(tablet-landscape) {
+		min-height: 70vh;
+	}
+
+	.actions {
+		padding-bottom:10px;
+
+		@include respond-to(tablet) {
+			padding:30px 0 20px;
+		}
+	}
+}
+
+
+
+.table-container {
+
+}
+
+.btn-block {
+    margin-bottom: 10px;
+}
+
+.presence::before {
+    content: "●"; /*Black Circle U+25CF*/
+    @include font-size(2.4);
+    position:relative;
+    top:2px;
+}
+
+.assigned-modules {
+    position: relative;
+    width:100%;
+    text-align:center;
+}
+
+
+.number-assigned {
+    font-size: 22px;
+    font-weight: bold;
+    color: $orange;
+    display:inline-block;
+/*
+    background-color:rgba(white,0.9);
+    height:28px;
+    width:28px;
+    border-radius:100%;
+*/
+}
+
+
+.actions {
+	padding-top:20px;
+
+}
+
+.btn-invite-students {
+    display:block;
+    float:left;
+    width:48%;
+    /*margin-right:4%;*/
+}
+
+.big-btn {
+	width:100%;
+	float:none;
+	height:60px;
+	padding:20px;
+	font-size:1.2em;
+}
+
+.btn-print-codes {
+    float:left;
+    width:48%;
+}
+
+
+.assignment-progress {
+    height: 2rem;
+}
+
+//.assignment-progress-bar{
+//    @extend .progress-bar;
+//
+//}
+//.assignment-progress {
+//    @extend .progress;
+//    height: 2rem;
+//}
+//
+//.assignment-progress-bar{
+//    @extend .progress-bar;
+//
+//}

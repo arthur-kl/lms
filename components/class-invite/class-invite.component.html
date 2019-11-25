@@ -1,0 +1,66 @@
+<app-user-menu></app-user-menu>
+
+<app-teacher-class-header></app-teacher-class-header>
+
+<div class="screen-wrapper">
+
+  <nav class="nav-strip">
+    <div class="container group">
+      <a class="back-link" (click)="onDoneClick()" i18n="@@teacher-class-invite-back-link">
+      Back to {{ cls.name }}
+    </a>
+    </div>
+  </nav>
+
+
+
+  <div class="container">
+
+    <h1 class="title" i18n="@@teacher-class-invite-invite-parents">Invite Parents</h1>
+
+    <p i18n="@@teacher-class-invite-sharing-link-des">
+      Invite parents to enrol their children in this class by sharing this link:
+    </p>
+
+    <p id="enrol-url">{{ enrollURL }}</p>
+
+    <button class="button aqua btn-copy big-btn" ngxClipboard [cbContent]="enrollURL"
+          (click)="showAlert(msgCopied.textContent)"
+          i18n="@@teacher-class-invite-share-with-parents">
+        Share with Parents
+    </button>
+
+    <h2 i18n="@@teacher-class-invite-parents">
+      Parents
+    </h2>
+    <ul>
+      <li i18n="@@teacher-class-invite-provide-a-number">
+        Provide a
+        <em>phone number</em>
+      </li>
+      <li i18n="@@teacher-class-invite-create-a-password">
+        Create a
+        <em>password</em>
+      </li>
+      <li i18n="@@teacher-class-invite-provide-their-child-name">
+        Provide their
+        <em>child's name</em>
+       </li>
+    </ul>
+    <p i18n="@@teacher-class-invite-download-app-des">
+      Then they can download the {{ product.displayName$() | async }} app and log in.
+    </p>
+
+    <p i18n="@@teacher-class-invite-see-student-list-enroll-des">
+    You will see each child's name in your student list when they've enrolled.
+  </p>
+<!--     <button class="button btn-done big-btn" (click)="onDoneClick()" i18n="@@teacher-class-invite-btn-done">
+    Done
+  </button>
+ -->  </div>
+</div>
+
+
+<div style="display:none">
+  <span #msgCopied i18n="@@class-invite-alert-copied">The link has been copied. Now paste to share with parents!.</span>
+</div>

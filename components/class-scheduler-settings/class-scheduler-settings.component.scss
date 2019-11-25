@@ -1,0 +1,87 @@
+@import '../../../../styles';
+
+.homework{
+  background-color:white;
+  padding-top:15px;
+  position:relative;
+  min-height: 75vh;
+  z-index: 1;
+
+  @include respond-to(tablet-landscape) {
+    min-height: 70vh;
+  }
+
+  .actions {
+    padding-bottom:10px;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+
+    .btn-cancel{
+      margin-top: 30px;
+    }
+
+    @include respond-to(tablet) {
+      padding:30px 0 20px;
+    }
+  }
+
+  .title {
+    @include font-size(3.2);
+    font-weight:700;
+    color:$teal;
+  }
+
+  .form-group{
+
+    .form-group-title{
+      @include font-size(2.0);
+      font-weight:600;
+      color:$teal;
+      padding:0 0 10px 0;
+    }
+
+    .radio-wrapper{
+      width: 50%;
+
+      .radio-chooser{
+        border-radius: 15px;
+        margin: 5px;
+        padding: 5px;
+        font-size: 1.3em;
+        font-weight: 600;
+        background-image: linear-gradient(-180deg, #96e5f4 55%, #2cb3e4 100%);
+        border: 2px solid #2cb3e4;
+        display: flex;
+        align-items: center;
+      }
+
+    }
+
+    .checkbox-wrapper{
+      display: flex;
+      width: 70%;
+      flex-wrap: wrap;
+
+      .day-chooser{
+        width: 30%;
+        border-radius: 15px;
+        margin: 5px;
+        padding: 5px;
+        font-size: 1.3em;
+        font-weight: 600;
+        background-image: linear-gradient(-180deg, #96e5f4 55%, #2cb3e4 100%);
+        border: 2px solid #2cb3e4;
+        display: flex;
+        align-items: center;
+      }
+
+    }
+
+    #date-input{
+      margin-left: 15px;
+    }
+
+  }
+
+}

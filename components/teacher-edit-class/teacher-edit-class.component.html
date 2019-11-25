@@ -1,0 +1,102 @@
+<app-user-menu></app-user-menu>
+
+<app-teacher-class-header></app-teacher-class-header>
+
+<div class="cls-{{cls.level}} link-bar-bg">
+  <ul class="link-bar">
+
+    <li class="bar-item">
+      <a class="link-button" [routerLink]="['../course']" i18n="@@teacher-teacher-curriculum-course">Course</a>
+    </li>
+
+    <li class="bar-item">
+      <a class="link-button" [routerLink]="['../students']"
+         i18n="@@teacher-components-class-detail-current">Students</a>
+    </li>
+
+    <li class="bar-item">
+      <a class="current" i18n="@@teacher-components-class-scheduler">Settings</a>
+    </li>
+
+  </ul>
+</div>
+
+<div class="screen-wrapper">
+
+  <div class="container">
+    <!--<div *ngIf="(error | async)" class="error-message-container">-->
+    <!--<span class="error-message">{{ error.message }}</span>-->
+    <!--</div>-->
+
+    <div *ngIf="cls" class="class-info" [formGroup]="teacherEditForm">
+
+      <div class="class-name form-group">
+        <label for="class-name">Name: </label>
+        <input id="class-name" i18n="@@teacher-components-class-edit-class-name"
+               class="form-control"
+               type="text"
+               name="name"
+               formControlName="clsName"/>
+        <div *ngIf="submitted && f.clsName.errors" class="g_error-text">
+          <span *ngIf="f.clsName.errors.required"
+                i18n="@@teacher-components-class-create-class-name-required">This class needs a name.</span>
+          <span *ngIf="f.clsName.value && f.clsName.errors.minlength"
+                i18n="@@teacher-components-class-create-class-name-minlength">The name must be at least {{ f.clsName.errors.minlength.requiredLength }} characters.</span>
+          <span *ngIf="f.clsName.value && f.clsName.errors.maxlength"
+                i18n="@@teacher-components-class-create-class-name-maxlength">The name must be at most {{ f.clsName.errors.maxlength.requiredLength }} characters.</span>
+        </div>
+      </div>
+
+      <div class="class-icons form-group">
+        <img class="class-icon"
+             *ngFor="let id of mascotIds()"
+             (click)="onSelectIcon(id)"
+             [ngClass]="{'icon_selected': cls.icon === id, 'icon_faded': cls.icon !== id}"
+             src="{{'assets/images/mascot/' + id + '.png'}}"/>
+      </div>
+
+      <!--<div class="form-group">
+        <div class="homework">
+          <label>Homework:</label>
+          <input type="checkbox"
+                 i18n="@@teacher-components-class-edit-homework"
+                 class="form-control"
+                 name="homework"
+                 formControlName="homework">
+        </div>
+        <a [routerLink]="['../scheduler']">Edit schedule</a>
+      </div>-->
+
+      <div class="course form-group">
+        <label>Course:</label>
+        <input type="checkbox"
+               i18n="@@teacher-components-class-edit-course"
+               class="form-control"
+               name="course"
+               formControlName="openCourse">
+      </div>
+
+      <div class="class-code">
+        <h4 class="class-code-label" i18n="@@teacher-label-class-code" >Class Code: </h4>
+        <span class="code">{{ cls.code }}</span>
+      </div>
+
+      <div class="actions">
+        <button class="button btn-save" (click)="onSaveClass()" i18n="@@teacher-save-button">
+          Save
+        </button>
+        <button class="button btn-clear-assignments grey"
+                [routerLink]="['/teacher/class', cls.code, 'assignments', 'delete-all']"
+                i18n="@@teacher-clear-all-assignment">
+          Clear All Assignments
+        </button>
+        <button id="btnDeleteClass" class="button red" [routerLink]="['/teacher/class', cls.code, 'delete']"
+                i18n="@@teacher-class-edit-delete-class-message">
+          Delete this Class.
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+

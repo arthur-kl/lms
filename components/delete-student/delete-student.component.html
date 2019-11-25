@@ -1,0 +1,58 @@
+<app-user-menu></app-user-menu>
+
+<div class="cls-{{cls.level}}">
+  <div *ngIf="cls" class="class-header">
+    <nav class="nav-strip">
+      <div class="container group">
+        <a (click)="goBack()" class="back-link" i18n="@@teacher-student-back-link">
+          Back to student
+        </a>
+      </div>
+    </nav>
+    <div class="class-info container group">
+      <img class="class-icon" src="/assets/images/mascot/{{cls?.icon}}.png"/>
+      <div class="class-details">
+        <p class="class-name">
+          <a class="cls-link" [routerLink]="['/teacher/class', cls.code]">
+            {{ cls.name ? cls.name : cls.code }}
+          </a>
+        </p>
+        <h3>{{ student?.name }}</h3>
+        <sub i18n="@@teacher-delete-student-phone-number" >Phone: {{ student?.phone }}</sub>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="screen-wrapper">
+
+  <div *ngIf="error" class="error-message-container">
+      <span class="error-message" i18n="@@teacher-delete-student-error-message">
+        Something went wong, the student was not deleted.
+        If this error persists please contact support.
+      </span>
+  </div>
+
+  <div *ngIf="student" class="student-info container">
+    <h3 i18n="@@teacher-delete-student-header">Delete Student</h3>
+    <p i18n="@@teacher-delete-student-confirm-text">
+      Are you sure you want to delete {{student.name}}?
+    </p>
+
+  </div>
+
+  <div class="actions">
+    <button appOneClick
+            (oneClick)="onDelete()"
+            class="button red delete"
+            i18n="@@teacher-delete-student-button-delete-text">
+      Delete
+    </button>
+    <a appOneClick
+       (oneClick)="goBack()"
+       class="button"
+       i18n="@@teacher-delete-student-button-cancel-text">
+      Cancel
+    </a>
+  </div>
+</div>

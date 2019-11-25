@@ -1,0 +1,56 @@
+<app-user-menu></app-user-menu>
+
+<div class="dashboard-header">
+  <h1>{{ teacher.displayName }}</h1>
+  <div class="stats group">
+    <span class="stat-classes">
+      <app-svg-icon [name]="'ic-class'"></app-svg-icon>
+      {{ getClassCount() }}
+    </span>
+    <span class="stat-students">
+      <app-svg-icon [name]="'ic-students'"></app-svg-icon>
+      {{ getStudentCount() }}
+    </span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div *ngIf="!(seenInApp$() | async)" class="welcome">
+    <h2 i18n="@@teacher-classes-list-title">Welcome to your Teacher Dashboard!</h2>
+    <p i18n="@@teacher-classes-list-description" >From here you can create classes, invite students to those classes, then assign and assess learning activities.</p>
+  </div>
+
+  <app-download-app-message *ngIf="!(seenInApp$() | async)"></app-download-app-message>
+</div>
+
+<div class="classes-header">
+  <h3 i18n="@@teacher-classes-list-header">
+    Classes
+  </h3>
+  <a class="btn-create-class" 
+     routerLink="class/create" 
+     title="Create Class"
+     [class.disabled]="disableAddClass | async"
+     i18n="@@teacher-class-list-add-a-class"><span></span>Add a class</a>
+</div>
+
+<div *ngIf="!classes?.length">
+  <p class="message info-message" i18n="@@teacher-class-list-title">Before you can add students, you need to create a class. Create
+    one now!</p>
+</div>
+
+<app-list-classes [teacher]="teacher" (selectedClass)="onClassSelected($event)">
+</app-list-classes>
+
+<div class="teacher-profile">
+  <div class="card">
+    <h3 i18n="@@teacher-class-list-profile">Your profile</h3>
+    <p><span class="name">{{ teacher.displayName }}</span> <span class="phone">{{ teacher.phone }}</span></p>
+    <p class="school" i18n="@@teacher-class-list-school"><span>School:</span> {{ getSelectedSchoolName() | async }}</p>
+    <p class="school-group" i18n="@@teacher-class-list-group"><span>Group:</span> {{ getSelectedGroupName() | async }}</p>
+
+    <app-teacher-actions (teacher)="teacher"></app-teacher-actions>
+  </div>
+</div>
+

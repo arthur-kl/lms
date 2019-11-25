@@ -1,0 +1,296 @@
+@import '../../../../styles';
+
+.dashboard-header {
+	padding-bottom:15px;
+	
+	.stats {
+		padding-top:5px;
+	}
+}
+
+
+
+.classes-header {
+  	@extend .container;
+  	/*padding-top: 80px;*/
+  	padding-bottom: 10px;
+  	position: relative;
+  
+  	@include respond-to(tablet) {
+	  	padding-top: 20px;
+	}
+	  
+
+
+  h3 {
+    font-size: 32px;
+    font-weight: 700;
+    color: $teal;
+    margin: 20px 0 0 0;
+    
+    @include respond-to(tablet) {
+	  	margin: 20px 0;
+	  	font-size: 42px;
+	}
+  }
+}
+
+.btn-create-class {
+  background-image: linear-gradient(-180deg, #FFFFFF 0%, #EDEAEA 97%);
+  border: 2px solid teal;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.29);
+  border-radius: 8px;
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  display: block;
+  height: 42px;
+  color:$teal;
+  padding:9px 8px 0 36px;
+  font-weight:700;
+  font-size:20px;
+  
+  @include respond-to(tablet) {
+	  top:40px;
+  }
+
+  span {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 24px;
+    top: 0;
+    left: 6px;
+    background-image: url(../../../../assets/icons/add.svg);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+.got-none {
+  @extend .container;
+  font-size:1.3em;
+  font-weight: 600;
+  line-spacing:2em;
+  padding:5px 15px 15px;
+  
+  @include respond-to(desktop) {
+	  top:40px;
+	  margin:0 auto 50px;
+	  padding:0;
+  }
+
+	.app-link {
+		 @extend .group;
+		display:block;
+		padding:15px;
+		background-color:lighten($orange,30%);
+		border:2px solid lighten($orange,10%);
+		border-radius:15px;
+		
+		@include respond-to(desktop) {
+			 width:$col3;
+		}
+		
+		img {
+			float:left;
+		    margin:0 15px 0 0;
+		}
+		span {
+			display:block;
+		    font-size:0.8em;
+		    text-decoration: none;
+			float:left;
+			color:rgba(black,0.85);
+			width:calc(100% - 85px);
+			
+			@include respond-to(desktop) {
+				font-size: 1em;
+				display: inline-block;
+				line-height: 1.3em;
+			}
+		}
+	}
+}
+
+.class-cards {
+  @extend .container;
+}
+
+.class-card {
+  width:$col6;
+  padding:0;
+  background-image: linear-gradient(-180deg, #EEFFFC 51%, #A5FCE3 100%);
+  border: 2px solid $teal;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50), inset 0 0 0 2px $aqua;
+  border-radius: 6px;
+  margin-bottom:15px;
+  @extend .group;
+
+  @include respond-to(tablet) {
+    width:$col3;
+    float:left;
+    margin-right:$gutter;
+
+    &:nth-child(2n) {
+      margin-right:0;
+    }
+  }
+  
+  &.cls-N {
+	  @extend .gradient-N;
+	  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50), inset 0 0 0 2px #f06348;
+  }
+  
+  &.cls-P {
+	  @extend .gradient-P;
+	  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50), inset 0 0 0 2px #efba08;
+  }
+  
+  &.cls-K {
+	  @extend .gradient-K;
+	  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50), inset 0 0 0 2px #1996c4;
+  }
+  &.cls-N {
+	  @extend .gradient-N;
+	  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50), inset 0 0 0 2px #f06348;
+  }
+  
+  &.cls-P {
+	  @extend .gradient-P;
+	  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50), inset 0 0 0 2px #efba08;
+  }
+  
+  &.cls-K {
+	  @extend .gradient-K;
+	  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50), inset 0 0 0 2px #1996c4;
+  }
+
+  a {
+    display:block;
+    color: rgba(black,0.75);
+    text-decoration: none;
+    padding:15px 15px 10px;
+  }
+  
+  .mascot {
+	  float:left;
+	  height:80px;
+	  width:60px;
+	  text-align:center;
+	  display:block;
+	  position:relative;
+	  left:-10px;
+	  top:-5px;
+	  
+	  img {
+		  height:100%;
+		  width:auto;
+	  }
+  }
+  
+  h2 {
+	  font-size:24px;
+	  font-weight:700;
+	  margin-bottom:3px;
+	  
+	  @include respond-to(tablet) {
+		  font-size:28px;
+		  margin-bottom:5px;
+	  }
+  }
+  
+  sub {
+	  font-weight:600;
+	  font-size:15px;
+	  @include respond-to(tablet) {
+		  font-size:17px;
+	  }
+  }
+  p {
+	  font-size:20px;
+	  font-weight:700;
+	  padding-top:10px;
+	  
+	  @include respond-to(tablet) {
+		  font-size:22px;
+	  }
+  }
+  
+  
+}
+
+.invite-link {
+  padding: 0.5em;
+  margin: 1em;
+}
+
+.teacher-profile {
+	@extend .container;
+	
+	.card {
+		background-image: linear-gradient(-180deg, #EEFFFC 51%, #A5FCE3 100%);
+		padding:15px 15px 5px;
+		border-radius: 6px;
+		margin:10px 0;
+		
+		@include respond-to(tablet) {
+			width:$col3;
+		}
+		
+		h3 {
+			color:$teal;
+			font-weight:700;
+			margin:0 0 10px;
+			
+			@include respond-to(tablet) {
+				font-size:18px;
+			}
+		}
+		
+		p {
+			margin:0 0 10px;
+			@extend .group;
+			
+			@include respond-to(tablet) {
+				font-size:18px;
+			}
+		}
+		
+		.name {
+			float:left;
+			font-size:24px;
+			font-weight:700;
+			
+			@include respond-to(tablet) {
+				font-size:28px;
+			}
+		}
+		
+		.phone {
+			float:right;
+			font-weight:600;
+			display: inline-block;
+			padding-top: 5px;
+			font-weight:700;
+			
+			@include respond-to(tablet) {
+				padding-top: 8px;
+			}
+		}
+		
+		.school, .school-group {
+			font-weight:700;
+			
+			span {
+				font-weight:400;
+				width:60px;
+				display:inline-block;	
+				color:$teal;
+			}
+		}
+	}
+	
+}
+

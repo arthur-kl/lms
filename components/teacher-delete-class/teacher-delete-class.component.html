@@ -1,0 +1,37 @@
+<app-user-menu></app-user-menu>
+
+<app-teacher-class-header></app-teacher-class-header>
+
+<div class="container" *ngIf="cls">
+
+  <h2 i18n="@@teacher-class-delete-delete-class">
+    Delete Class
+  </h2>
+
+  <p i18n="@@teacher-class-delete-confirm-message">
+    Are you sure you want to delete this class? This action can not be undone!
+  </p>
+  <p id="classCodeTxt">
+    {{ cls.code }}
+  </p>
+  <p id="classNameTxt">
+    {{ cls.name }}
+  </p>
+  <hr>
+
+  <button (click)="onDelete(true)"
+          id="btnDeleteClass"
+          [disabled]="busy"
+          class="button red del-button"
+          i18n="@@teacher-class-delete-delete-button-text">
+    Delete
+  </button>
+
+  <a (click)="goBack()"
+     class="button del-button" i18n="@@teacher-class-delete-cancel-button">Cancel</a>
+
+</div>
+<div>
+  {{ error }}
+</div>
+<app-spinner-inline [busy]="busy"></app-spinner-inline>
